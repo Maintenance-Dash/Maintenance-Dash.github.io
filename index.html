@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -7,28 +8,227 @@
   <title>Monitoring MHE</title>
 
   <style>
-    html, body {
+    * {
       margin: 0;
       padding: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
+      box-sizing: border-box;
     }
 
-    iframe {
+    html, body {
       width: 100%;
-      height: 100%;
-      border: none;
+      min-height: 100%;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(
+          120deg,
+          rgba(8, 18, 32, 0.90),
+          rgba(10, 30, 48, 0.60),
+          rgba(0, 0, 0, 0.78)
+        ),
+        url("https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=2000&q=85")
+        center center / cover no-repeat;
+      background-color: #101b2a;
+    }
+
+    /* Efek cahaya di latar belakang */
+    body::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(
+          circle at center,
+          transparent 0%,
+          rgba(0, 0, 0, 0.18) 55%,
+          rgba(0, 0, 0, 0.55) 100%
+        );
+      pointer-events: none;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 90%;
+      max-width: 800px;
+      text-align: center;
+      padding: 55px 30px;
+      color: #ffffff;
+      background: rgba(12, 25, 40, 0.48);
+      border: 1px solid rgba(255, 255, 255, 0.20);
+      border-radius: 24px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      animation: fadeIn 0.9s ease;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 8px 16px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(255, 190, 50, 0.65);
+      border-radius: 30px;
+      color: #ffd166;
+      background: rgba(255, 190, 50, 0.10);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 6vw, 62px);
+      font-weight: 800;
+      letter-spacing: 2px;
+      line-height: 1.15;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+    }
+
+    h1 span {
+      color: #ffc247;
+    }
+
+    .subtitle {
+      margin: 22px auto 35px;
+      max-width: 560px;
+      color: #e4ebf3;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .btn-monitoring {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-width: 250px;
+      padding: 17px 30px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #ffc247, #ff9f1c);
+      color: #152235;
+      font-size: 16px;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 25px rgba(255, 159, 28, 0.30);
+      transition: all 0.3s ease;
+    }
+
+    .btn-monitoring:hover {
+      transform: translateY(-4px);
+      background: linear-gradient(135deg, #ffda79, #ffb52e);
+      box-shadow: 0 14px 32px rgba(255, 159, 28, 0.45);
+    }
+
+    .btn-monitoring:active {
+      transform: scale(0.97);
+    }
+
+    .arrow {
+      font-size: 22px;
+      transition: transform 0.3s ease;
+    }
+
+    .btn-monitoring:hover .arrow {
+      transform: translateX(5px);
+    }
+
+    .footer {
+      position: absolute;
+      z-index: 1;
+      bottom: 22px;
+      left: 15px;
+      right: 15px;
+      text-align: center;
+      color: rgba(255, 255, 255, 0.70);
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 40px 20px;
+        border-radius: 18px;
+      }
+
+      .tag {
+        font-size: 10px;
+        letter-spacing: 2px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+      }
+
+      .btn-monitoring {
+        min-width: 220px;
+        padding: 15px 22px;
+        font-size: 14px;
+      }
+
+      .footer {
+        font-size: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <a href="https://script.google.com/macros/s/AKfycbzaQLGGBm7k1hkoedFCJKwUQ3veeCkyvBpPLN1FOrRMj_CanLTk4L94EYNRpUg8iDDBQw/exec"
-   target="_blank">
-   Monitoring MHE
-  </a>
+  <main class="container">
+
+    <div class="tag">MAINTENANCE MANAGEMENT SYSTEM</div>
+
+    <h1>MONITORING <span>MHE</span></h1>
+
+    <p class="subtitle">
+      Sistem monitoring Material Handling Equipment untuk
+      mendukung pemantauan unit, pencatatan aktivitas,
+      dan pengelolaan maintenance secara terintegrasi.
+    </p>
+
+    <a
+      class="btn-monitoring"
+      href="https://script.google.com/macros/s/AKfycbzaQLGGBm7k1hkoedFCJKwUQ3veeCkyvBpPLN1FOrRMj_CanLTk4L94EYNRpUg8iDDBQw/exec"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      BUKA MONITORING MHE
+      <span class="arrow">→</span>
+    </a>
+
+  </main>
+
+  <div class="footer">
+    MHE MAINTENANCE &nbsp; | &nbsp; DIGITAL MONITORING SYSTEM
+  </div>
 
 </body>
 </html>
+```
